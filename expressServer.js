@@ -8,6 +8,7 @@ const petsPath = path.join(__dirname, 'pets.json');
 const app = express()
 
 app.disable('x-powered-by');
+
 app.get('/pets', function(req, res) {
   fs.readFile(petsPath, 'utf8', function(err, petsJSON) {
     if (err) {
@@ -20,30 +21,24 @@ app.get('/pets', function(req, res) {
     res.send(pets);
   });
 });
-app.get('/pets/:id', function(req, res) {
-  fs.readFile(petsPath, 'utf8', function(err, petsJSON) {
-    if (err) {
-      console.error(err.stack);
-      return res.sendStatus(404);
-    }
+app.post('/pets', function(req, res) {
+  var pets = req.body;
 
-    var id = Number.parseInt(req.params.id);
-    var pets = JSON.parse(petsJSON);
+  if (!pets) {
+    return res.sendStatus(400);
+  }
 
-    if (id < 0 || id >= pets.length || Number.isNaN(id)) {
-      return res.sendStatus(404);
+  //guests.push(pets);
 
-      console.log("big error");
-    }
-    res.set('Content-Type', 'application/json');
-    res.send(pets[id]);
-  });
-});
-app.use(function(req, res) {
-  res.sendStatus(404);
+  res.send(pets);
 });
 
-app.listen(port, function() {
-  console.log('Listening on port', port);
-});
+
+
+
+
+
+
+
+
 module.exports = app;
