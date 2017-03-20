@@ -6,24 +6,6 @@ const petsPath = path.join(__dirname, 'pets.json');
 const url = require('url')
 const port = 5555
 
-// const server = http.createServer((req, res) => {
-// if (req.method === 'GET'){
-//   if(req.url === '/pets'){
-//     fs.readFile("pets.json", "utf8", (readErr, data) => {
-//       if (readErr) {
-//         throw readErr;
-//       }
-//       res.statusCode = 200
-//       res.setHeader('Content-type', 'text/html')
-//       res.end(data)
-// })
-// }
-// }
-// })
-// server.listen(port, (err) => {
-//   if (err) throw err
-//   console.log("doing the listening on port " + port)
-// })
 var server = http.createServer(function(req, res) {
   if (req.method === 'GET' && req.url === '/pets') {
     fs.readFile(petsPath, 'utf8', function(err, petsJSON) {

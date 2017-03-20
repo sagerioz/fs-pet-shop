@@ -80,7 +80,7 @@ app.patch('/pets/:index', (req, res) => {
       var age = petDetails.age
       var name = petDetails.name
       var kind = petDetails.kind
-      console.log("PET DETAILS", petDetails, "AGE", age);
+      //console.log("PET DETAILS", petDetails, "AGE", age);
       // console.log(age, name, kind)
       if (!petDetails) {
         return res.sendStatus(400);
@@ -98,15 +98,15 @@ app.patch('/pets/:index', (req, res) => {
             for(var key in pets[index]){
               //console.log('Inside For Loop');
               if (age !== undefined && key === 'age') {
-                console.log('age');
+                //console.log('age');
                 pets[index].age = age;
               }
               if (name !== undefined && key === 'name') {
-                console.log('name');
+              //  console.log('name');
                 pets[index].name = name;
               }
               if (kind !== undefined && key === 'kind') {
-                console.log('kind')
+                //console.log('kind')
                 pets[index].kind = kind;
               }
             }
